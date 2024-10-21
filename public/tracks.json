@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "title": "Stomp Rap | Adrenaline",
+    "artist": "Alex-Productions",
+    "src": "/audio/track1.mp3",
+    "duration": "56"
+  },
+  {
+    "id": 2,
+    "title": "Best Background Music no Copyright",
+    "artist": "DesiFreeMusic",
+    "src": "/audio/track2.mp3",
+    "duration": "24"
+  },
+  {
+    "id": 3,
+    "title": "background music for Trailer & Shorts",
+    "artist": "holdi2017",
+    "src": "/audio/track3.mp3",
+    "duration": "12"
+  }
+]

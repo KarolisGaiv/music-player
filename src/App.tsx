@@ -1,32 +1,5 @@
 import { useMusicPlayerStore } from '@/store'
-import track1 from '@/assets/audio/stomp-rap-adrenaline-133120.mp3'
-import track2 from '@/assets/audio/track2.mp3'
-import track3 from '@/assets/audio/track3.mp3'
-import { useEffect } from 'react'
-
-const tracks = [
-  {
-    id: 1,
-    title: 'Stomp Rap | Adrenaline',
-    artist: 'Alex-Productions',
-    src: track1,
-    duration: '56',
-  },
-  {
-    id: 2,
-    title: 'Best Background Music no Copyright',
-    artist: 'DesiFreeMusic',
-    src: track2,
-    duration: '24',
-  },
-  {
-    id: 3,
-    title: 'background music for Trailer & Shorts',
-    artist: 'holdi2017',
-    src: track3,
-    duration: '12',
-  },
-]
+import { usePlaylist } from './hooks/usePlaylist'
 
 function App() {
   const {
@@ -42,9 +15,15 @@ function App() {
     toggleFavorite,
   } = useMusicPlayerStore()
 
-  useEffect(() => {
-    setTrackList(tracks)
-  }, [setTrackList])
+  const { loading, error } = usePlaylist()
+
+  if (loading) {
+    return <div>Loading playlist...</div>
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>
+  }
 
   return (
     <div>
