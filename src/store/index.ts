@@ -36,6 +36,7 @@ export const useMusicPlayerStore = create<MusicPlayerState>(set => ({
 
   togglePlayPause: () => set(state => ({ isPlaying: !state.isPlaying })),
 
+  // modulo operator here ensures that playlist will behave in circular way. without it there would be out-of-bounds indices (for example -1 or more than the whole playlist length)
   nextTrack: () =>
     set(state => ({
       currentTrackIndex: (state.currentTrackIndex + 1) % state.trackList.length,
@@ -49,6 +50,7 @@ export const useMusicPlayerStore = create<MusicPlayerState>(set => ({
 
   setVolume: volume => set({ volume }),
 
+  // using the spread operator to manage the favorites array is ok because it is only a flat array of primitive values. Otherwise, Immer could be a solution to use
   toggleFavorite: id =>
     set(state => ({
       favorites: state.favorites.includes(id)
