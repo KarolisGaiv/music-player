@@ -16,7 +16,9 @@ export function usePlaylist() {
         const data = await res.json()
         setTrackList(data)
       } catch (err) {
-        setError(err.message)
+        if (err instanceof Error) {
+          setError(err.message)
+        }
       }
       setLoading(false)
     }
