@@ -9,7 +9,7 @@ export function usePlaylist() {
   useEffect(() => {
     const fetchPlaylistData = async () => {
       try {
-        const res = await fetch('../public/tracks.json')
+        const res = await fetch('/tracks.json')
         if (!res.ok) {
           throw new Error('Failed to fetch track data')
         }
