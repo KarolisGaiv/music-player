@@ -1,0 +1,27 @@
+.song-list-wrapper {
+  padding: 1rem;
+}
+
+.song-item-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.song-title,
+.song-artist {
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.song-info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
+  max-width: 350px;
+}

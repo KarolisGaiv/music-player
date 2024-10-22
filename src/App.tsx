@@ -28,11 +28,11 @@ function App() {
   }
 
   return (
-    <div>
+    <div className="content-wrapper">
       <header>
         <h1>Music Player</h1>
       </header>
-      <main className="content-wrapper">
+      <main>
         <section>
           <figure>PLACEHOLDER FOR SONG COVER</figure>
         </section>
