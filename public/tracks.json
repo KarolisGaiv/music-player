@@ -4,7 +4,8 @@
     "title": "Stomp Rap | Adrenaline",
     "artist": "Alex-Productions",
     "src": "/audio/track1.mp3",
-    "duration": "56"
+    "duration": "56",
+    "cover": "/covers/cover1.jpg"
   },
   {
     "id": 2,

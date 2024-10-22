@@ -9,7 +9,10 @@ export function SongList() {
     <nav className="song-list-wrapper">
       {trackList.map(track => (
         <div key={track.title} className="song-item-wrapper">
-          <button className="play-button">Play/pause</button>
+          <button
+            className="play-button"
+            style={{ backgroundImage: `url(${track.cover})` }}
+          ></button>
           <div className="song-info">
             <h2 className="song-title">{track.title}</h2>
             <h3 className="song-artist">{track.artist}</h3>
