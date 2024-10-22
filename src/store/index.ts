@@ -6,6 +6,7 @@ type Track = {
   artist: string
   src: string
   duration: string
+  cover: string
 }
 
 interface MusicPlayerState {
