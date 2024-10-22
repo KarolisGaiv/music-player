@@ -1,5 +1,7 @@
 import { useMusicPlayerStore } from '@/store'
 import { usePlaylist } from './hooks/usePlaylist'
+import { SongList } from './components/SongList/SongList'
+import '@/index.css'
 
 function App() {
   const {
@@ -27,18 +29,17 @@ function App() {
 
   return (
     <div>
-      <h1>Music Player</h1>
-      <div>
-        {trackList.map((track, index) => (
-          <div key={track.id}>
-            <h3>{track.title}</h3>
-            <p>{track.artist}</p>
-            <button onClick={() => playTrack(index)}>
-              {isPlaying && currentTrackIndex === index ? 'Pause' : 'Play'}
-            </button>
-          </div>
-        ))}
-      </div>
+      <header>
+        <h1>Music Player</h1>
+      </header>
+      <main className="content-wrapper">
+        <section>
+          <figure>PLACEHOLDER FOR SONG COVER</figure>
+        </section>
+        <aside>
+          <SongList />
+        </aside>
+      </main>
       <div>
         <button onClick={prevTrack}>Previous</button>
         <button onClick={togglePlayPause}>{isPlaying ? 'Pause' : 'Play'}</button>
