@@ -40,11 +40,11 @@ function App() {
           <SongList />
         </aside>
       </main>
-      <div>
+      {/* <div>
         <button onClick={prevTrack}>Previous</button>
         <button onClick={togglePlayPause}>{isPlaying ? 'Pause' : 'Play'}</button>
         <button onClick={nextTrack}>Next</button>
-      </div>
+      </div> */}
     </div>
   )
 }
