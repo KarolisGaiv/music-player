@@ -1,6 +1,7 @@
 import { usePlaylist } from '@/hooks/usePlaylist'
 import { SongList } from '@/components/SongList/SongList'
 import { SongCover } from '@/components/SongCover/SongCover'
+import { ControlsBar } from './components/ControlsBar/ControlsBar'
 import '@/index.css'
 
 function App() {
@@ -27,6 +28,9 @@ function App() {
           <SongList />
         </aside>
       </main>
+      <footer>
+        <ControlsBar />
+      </footer>
     </div>
   )
 }
