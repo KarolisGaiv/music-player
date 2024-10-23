@@ -61,21 +61,8 @@
   }
 }
 
-.volume-icon {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 24px;
-  color: white;
-  opacity: 0.9;
-  pointer-events: none;
-  transition: opacity 0.2s ease;
-}
-
-/* Show play icon by default, hide it when playing */
+.volume-icon,
 .play-icon {
-  display: none;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -85,18 +72,4 @@
   opacity: 0.9;
   pointer-events: none;
   transition: opacity 0.2s ease;
-}
-
-/* Hide play icon when the current track is playing */
-.play-button.playing .play-icon {
-  display: none;
-}
-
-/* Show play icon when hovering over the button and track is not playing */
-.play-button:hover .play-icon {
-  display: block;
-}
-
-.play-button:hover .playing {
-  background-blend-mode: overlay;
 }

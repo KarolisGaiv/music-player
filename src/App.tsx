@@ -1,22 +1,8 @@
-import { useMusicPlayerStore } from '@/store'
 import { usePlaylist } from './hooks/usePlaylist'
 import { SongList } from './components/SongList/SongList'
 import '@/index.css'
 
 function App() {
-  const {
-    trackList,
-    setTrackList,
-    playTrack,
-    togglePlayPause,
-    nextTrack,
-    prevTrack,
-    isPlaying,
-    currentTrackIndex,
-    favorites,
-    toggleFavorite,
-  } = useMusicPlayerStore()
-
   const { loading, error } = usePlaylist()
 
   if (loading) {
@@ -40,11 +26,6 @@ function App() {
           <SongList />
         </aside>
       </main>
-      {/* <div>
-        <button onClick={prevTrack}>Previous</button>
-        <button onClick={togglePlayPause}>{isPlaying ? 'Pause' : 'Play'}</button>
-        <button onClick={nextTrack}>Next</button>
-      </div> */}
     </div>
   )
 }

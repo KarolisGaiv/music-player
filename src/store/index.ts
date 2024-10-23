@@ -38,21 +38,45 @@ export const useMusicPlayerStore = create<MusicPlayerState>((set, get) => ({
   playTrack: index => {
     const state = get()
     const track = state.trackList[index]
-
     let audio = state.audio
+
+    // Create a new audio instance if none exists
     if (!audio) {
       audio = new Audio(track.src)
       audio.volume = state.volume
-      set({ audio })
-    } else {
-      audio.src = track.src
+      set({ audio, currentTrackIndex: index, isPlaying: true })
+      audio.play()
+      setAudioTimeUpdate(audio, index)
+      return
     }
 
-    audio.play()
-    audio.ontimeupdate = () => {
+    // If the track is different, handle the switch
+    if (state.currentTrackIndex !== index) {
+      if (state.isPlaying) {
+        audio.pause()
+      }
+      audio.src = track.src
+      audio.play()
       set({ currentTrackIndex: index, isPlaying: true })
+      setAudioTimeUpdate(audio, index)
+      return
     }
-    set({ isPlaying: true })
+
+    // If the same track is loaded, toggle play/pause
+    if (state.isPlaying) {
+      audio.pause()
+      set({ isPlaying: false })
+    } else {
+      audio.play()
+      set({ isPlaying: true })
+    }
+
+    // set the time update listener for the audio
+    function setAudioTimeUpdate(audioElement: HTMLAudioElement, currentIndex: number) {
+      audioElement.ontimeupdate = () => {
+        set({ currentTrackIndex: currentIndex })
+      }
+    }
   },
 
   togglePlayPause: () => {

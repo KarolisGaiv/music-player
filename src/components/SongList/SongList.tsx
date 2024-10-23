@@ -1,12 +1,13 @@
 import { useMusicPlayerStore } from '@/store'
-import '@/components/SongList/style.css'
 import { formatDuration } from '@/utility/timeFormat'
 import { BsPlay, BsPause, BsVolumeUp } from 'react-icons/bs'
 import classNames from 'classnames'
+import '@/components/SongList/style.css'
+import { useState } from 'react'
 
 export function SongList() {
-  const { trackList, playTrack, currentTrackIndex, togglePlayPause, isPlaying } =
-    useMusicPlayerStore()
+  const { trackList, playTrack, currentTrackIndex, isPlaying } = useMusicPlayerStore()
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
   return (
     <nav className="song-list-wrapper">
@@ -16,17 +17,27 @@ export function SongList() {
           className={classNames('song-item-wrapper', {
             playing: currentTrackIndex === index,
           })}
+          onMouseEnter={() => setHoveredIndex(index)}
+          onMouseLeave={() => setHoveredIndex(null)}
         >
           <button
             className={classNames('play-button', { playing: currentTrackIndex === index })}
             style={{ backgroundImage: `url(${track.cover})` }}
-            onClick={() => (currentTrackIndex === index ? togglePlayPause() : playTrack(index))}
+            onClick={() => playTrack(index)}
           >
-            {currentTrackIndex === index && isPlaying ? (
-              <BsVolumeUp className="volume-icon" />
-            ) : (
+            {currentTrackIndex === index ? (
+              isPlaying ? (
+                hoveredIndex === index ? (
+                  <BsPause className="play-icon" />
+                ) : (
+                  <BsVolumeUp className="volume-icon" />
+                )
+              ) : (
+                <BsPlay className="play-icon" />
+              )
+            ) : hoveredIndex === index ? (
               <BsPlay className="play-icon" />
-            )}
+            ) : null}
           </button>
           <div className="song-info">
             <h2 className="song-title">{track.title}</h2>
