@@ -18,11 +18,13 @@ interface MusicPlayerState {
   audio: HTMLAudioElement | null
   setTrackList: (tracks: Track[]) => void
   playTrack: (index: number) => void
-  togglePlayPause: () => void
   nextTrack: () => void
   prevTrack: () => void
   setVolume: (volume: number) => void
   toggleFavorite: (volume: number) => void
+  currentTime: number
+  duration: number
+  updateCurrentTime: () => void
 }
 
 export const useMusicPlayerStore = create<MusicPlayerState>((set, get) => ({
@@ -32,6 +34,8 @@ export const useMusicPlayerStore = create<MusicPlayerState>((set, get) => ({
   volume: 0.5,
   favorites: [],
   audio: null,
+  currentTime: 0,
+  duration: 0,
 
   setTrackList: tracks => set({ trackList: tracks }),
 
@@ -40,54 +44,64 @@ export const useMusicPlayerStore = create<MusicPlayerState>((set, get) => ({
     const track = state.trackList[index]
     let audio = state.audio
 
+    // define utlity function to start updating song progress
+    const startUpdatingProgress = () => {
+      const updateProgress = () => {
+        set({ currentTime: audio?.currentTime })
+        if (!audio?.paused) {
+          requestAnimationFrame(updateProgress)
+        }
+      }
+      requestAnimationFrame(updateProgress)
+    }
+
     // Create a new audio instance if none exists
     if (!audio) {
       audio = new Audio(track.src)
       audio.volume = state.volume
-      set({ audio, currentTrackIndex: index, isPlaying: true })
-      audio.play()
-      setAudioTimeUpdate(audio, index)
+
+      // Set states, start song and track song progress when metadata is loaded
+      audio.onloadedmetadata = () => {
+        set({ duration: audio?.duration, audio, currentTrackIndex: index, isPlaying: true })
+        audio?.play()
+        startUpdatingProgress()
+      }
       return
     }
 
-    // If the track is different, handle the switch
+    // Handle track switch
     if (state.currentTrackIndex !== index) {
       if (state.isPlaying) {
         audio.pause()
       }
       audio.src = track.src
-      audio.play()
-      set({ currentTrackIndex: index, isPlaying: true })
-      setAudioTimeUpdate(audio, index)
+
+      audio.onloadedmetadata = () => {
+        set({ duration: audio?.duration, audio, currentTrackIndex: index, isPlaying: true })
+        audio.play()
+        startUpdatingProgress()
+      }
       return
     }
 
-    // If the same track is loaded, toggle play/pause
+    // Toggle play/pause
     if (state.isPlaying) {
       audio.pause()
       set({ isPlaying: false })
     } else {
       audio.play()
       set({ isPlaying: true })
-    }
-
-    // set the time update listener for the audio
-    function setAudioTimeUpdate(audioElement: HTMLAudioElement, currentIndex: number) {
-      audioElement.ontimeupdate = () => {
-        set({ currentTrackIndex: currentIndex })
-      }
+      startUpdatingProgress()
     }
   },
 
-  togglePlayPause: () => {
-    const { isPlaying, audio } = get()
+  updateCurrentTime: () => {
+    const { audio } = get()
     if (audio) {
-      if (isPlaying) {
-        audio.pause()
-      } else {
-        audio.play()
-      }
-      set({ isPlaying: !isPlaying })
+      set({
+        currentTime: audio.currentTime,
+        duration: audio.duration,
+      })
     }
   },
 
