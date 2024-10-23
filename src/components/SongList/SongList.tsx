@@ -1,8 +1,7 @@
 import { useMusicPlayerStore } from '@/store'
 import '@/components/SongList/style.css'
 import { formatDuration } from '@/utility/timeFormat'
-import { AiOutlinePlayCircle } from 'react-icons/ai'
-import { BsPause } from 'react-icons/bs'
+import { BsPlay, BsPause, BsVolumeUp } from 'react-icons/bs'
 import classNames from 'classnames'
 
 export function SongList() {
@@ -19,11 +18,15 @@ export function SongList() {
           })}
         >
           <button
-            className="play-button"
+            className={classNames('play-button', { playing: currentTrackIndex === index })}
             style={{ backgroundImage: `url(${track.cover})` }}
             onClick={() => (currentTrackIndex === index ? togglePlayPause() : playTrack(index))}
           >
-            {isPlaying && currentTrackIndex === index ? <BsPause /> : <AiOutlinePlayCircle />}
+            {currentTrackIndex === index && isPlaying ? (
+              <BsVolumeUp className="volume-icon" />
+            ) : (
+              <BsPlay className="play-icon" />
+            )}
           </button>
           <div className="song-info">
             <h2 className="song-title">{track.title}</h2>
