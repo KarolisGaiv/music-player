@@ -1,5 +1,9 @@
 import { useMusicPlayerStore } from '@/store'
 import '@/components/ControlsBar/style.css'
+import { MdSkipNext } from 'react-icons/md'
+import { MdSkipPrevious } from 'react-icons/md'
+import { MdOutlinePause } from 'react-icons/md'
+import { MdOutlinePlayArrow } from 'react-icons/md'
 
 export function ControlsBar() {
   const {
@@ -11,6 +15,7 @@ export function ControlsBar() {
     currentTime,
     duration,
     updateCurrentTime,
+    isPlaying,
   } = useMusicPlayerStore()
 
   if (currentTrackIndex) {
@@ -20,13 +25,19 @@ export function ControlsBar() {
   const progressPercentage = duration ? (currentTime / duration) * 100 : 0
 
   return (
-    <div>
+    <div className="player-bar">
       <div className="progress-bar" style={{ width: `${progressPercentage}%` }} />
       <div className="controls-wrapper">
         <div className="left-controls">
-          <button onClick={() => prevTrack()}>Previous</button>
-          <button onClick={() => playTrack(currentTrackIndex)}>Play/Pause</button>
-          <button onClick={() => nextTrack()}>Next</button>
+          <button onClick={() => prevTrack()}>
+            <MdSkipPrevious className="control-icon" />
+          </button>
+          <button onClick={() => playTrack(currentTrackIndex)}>
+            {isPlaying ? <MdOutlinePause /> : <MdOutlinePlayArrow />}
+          </button>
+          <button onClick={() => nextTrack()}>
+            <MdSkipNext className="control-icon" />
+          </button>
         </div>
         <div className="middle-controls"></div>
         <div className="right-controls"></div>
