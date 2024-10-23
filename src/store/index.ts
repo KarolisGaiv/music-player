@@ -11,7 +11,7 @@ type Track = {
 
 interface MusicPlayerState {
   trackList: Track[]
-  currentTrackIndex: number
+  currentTrackIndex: number | null
   isPlaying: boolean
   volume: number
   favorites: number[]
@@ -27,7 +27,7 @@ interface MusicPlayerState {
 
 export const useMusicPlayerStore = create<MusicPlayerState>((set, get) => ({
   trackList: [],
-  currentTrackIndex: 0,
+  currentTrackIndex: null,
   isPlaying: false,
   volume: 0.5,
   favorites: [],

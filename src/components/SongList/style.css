@@ -7,6 +7,17 @@
   justify-content: space-between;
   align-items: center;
   height: 60px;
+
+  &.playing {
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.song-info,
+.song-title,
+.song-duration,
+.song-artist {
+  background-color: transparent;
 }
 
 .song-info {
