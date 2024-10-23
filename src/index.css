@@ -68,10 +68,21 @@ button:focus-visible {
 main {
   display: flex;
   justify-content: space-between;
+  margin: auto 0;
+}
+
+footer {
+  margin-top: auto;
 }
 
 .cover-image-wrapper {
   margin: auto;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 @media (prefers-color-scheme: light) {

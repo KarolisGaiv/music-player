@@ -21,7 +21,7 @@ export function ControlsBar() {
 
   return (
     <div>
-      <div className="progress-bar" style={{ width: `${progressPercentage}%`, height: ' 30px' }} />
+      <div className="progress-bar" style={{ width: `${progressPercentage}%` }} />
       <div className="controls-wrapper">
         <div className="left-controls">
           <button onClick={() => prevTrack()}>Previous</button>
