@@ -8,6 +8,7 @@ import {
   MdOutlineVolumeUp,
   MdOutlineVolumeOff,
 } from 'react-icons/md'
+import { formatDuration } from '@/utility/timeFormat'
 
 export function ControlsBar() {
   const {
@@ -45,6 +46,11 @@ export function ControlsBar() {
           <button onClick={() => nextTrack()}>
             <MdSkipNext className="control-icon" />
           </button>
+          <div className="time-details">
+            <span>
+              {formatDuration(currentTime)} / {formatDuration(duration)}
+            </span>
+          </div>
         </div>
         <div className="middle-controls">
           <div className="cover-container">
