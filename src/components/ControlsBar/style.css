@@ -17,13 +17,20 @@
 
 .left-controls,
 .middle-controls,
+.right-controls {
+  width: 33%;
+  display: flex;
+}
+
+.left-controls,
+.middle-controls,
 .right-controls,
-.volume-container {
+.volume-container,
+.song-details {
   background-color: inherit;
 }
 
 .left-controls {
-  display: flex;
   align-items: center;
 }
 
@@ -32,6 +39,10 @@
   background: transparent;
   border: none;
   padding: 5px;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .control-icon {
@@ -45,6 +56,41 @@
   height: 40px;
   width: 40px;
   background: transparent;
+}
+
+.middle-controls {
+  align-items: center;
+  justify-content: center;
+
+  & .cover-container {
+    height: 40px;
+    width: 40px;
+    border-radius: 5px;
+    background-size: cover;
+    background-position: center;
+    border: none;
+
+    & img {
+      border-radius: 4px;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  & .song-details {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+
+    & span {
+      background-color: transparent;
+      font-size: 14px;
+    }
+  }
+}
+
+.right-controls {
+  justify-content: end;
 }
 
 .volume-slider {
@@ -68,8 +114,4 @@
   background: none;
   border: none;
   cursor: pointer;
-
-  &:focus {
-    outline: none;
-  }
 }

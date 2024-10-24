@@ -25,6 +25,8 @@ export function ControlsBar() {
 
   const progressPercentage = duration ? (currentTime / duration) * 100 : 0
 
+  const trackDetails = currentTrackIndex !== null ? trackList[currentTrackIndex] : null
+
   return (
     <div className="player-bar">
       <div className="progress-bar" style={{ width: `${progressPercentage}%` }} />
@@ -44,7 +46,15 @@ export function ControlsBar() {
             <MdSkipNext className="control-icon" />
           </button>
         </div>
-        <div className="middle-controls"></div>
+        <div className="middle-controls">
+          <div className="cover-container">
+            <img src={trackDetails?.cover} alt="{trackDetails.title}" />
+          </div>
+          <div className="song-details">
+            <span>{trackDetails?.title}</span>
+            <span>{trackDetails?.artist}</span>
+          </div>
+        </div>
         <div className="right-controls">
           <div className="volume-container">
             <input
