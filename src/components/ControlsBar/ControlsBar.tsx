@@ -1,9 +1,13 @@
 import { useMusicPlayerStore } from '@/store'
 import '@/components/ControlsBar/style.css'
-import { MdSkipNext } from 'react-icons/md'
-import { MdSkipPrevious } from 'react-icons/md'
-import { MdOutlinePause } from 'react-icons/md'
-import { MdOutlinePlayArrow } from 'react-icons/md'
+import {
+  MdSkipNext,
+  MdSkipPrevious,
+  MdOutlinePause,
+  MdOutlinePlayArrow,
+  MdOutlineVolumeUp,
+  MdOutlineVolumeOff,
+} from 'react-icons/md'
 
 export function ControlsBar() {
   const {
@@ -14,13 +18,10 @@ export function ControlsBar() {
     currentTrackIndex,
     currentTime,
     duration,
-    updateCurrentTime,
     isPlaying,
+    volume,
+    setVolume,
   } = useMusicPlayerStore()
-
-  if (currentTrackIndex) {
-    const currentTrackDetails = trackList[currentTrackIndex]
-  }
 
   const progressPercentage = duration ? (currentTime / duration) * 100 : 0
 
@@ -44,7 +45,29 @@ export function ControlsBar() {
           </button>
         </div>
         <div className="middle-controls"></div>
-        <div className="right-controls"></div>
+        <div className="right-controls">
+          <div className="volume-container">
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step="0.01"
+              value={volume}
+              onChange={e => setVolume(parseFloat(e.target.value))}
+              className="volume-slider"
+            />
+            <button
+              className="volume-button"
+              onClick={() => (volume === 0 ? setVolume(0.5) : setVolume(0))}
+            >
+              {volume > 0 ? (
+                <MdOutlineVolumeUp className="sound-icon" />
+              ) : (
+                <MdOutlineVolumeOff className="sound-icon" />
+              )}
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   )

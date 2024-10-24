@@ -8,13 +8,17 @@
 }
 
 .controls-wrapper {
-  padding: 10px 0;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
   background-color: #333;
 }
 
 .left-controls,
 .middle-controls,
-.right-controls {
+.right-controls,
+.volume-container {
   background-color: inherit;
 }
 
@@ -23,9 +27,11 @@
   align-items: center;
 }
 
-.left-controls button {
+.left-controls button,
+.right-controls button {
   background: transparent;
   border: none;
+  padding: 5px;
 }
 
 .control-icon {
@@ -34,8 +40,36 @@
   background: transparent;
 }
 
-.play-pause-icon {
+.play-pause-icon,
+.sound-icon {
   height: 40px;
   width: 40px;
   background: transparent;
+}
+
+.volume-slider {
+  accent-color: red;
+  display: none;
+  width: 100px;
+  margin: 0 10px;
+  height: 2px;
+}
+
+.volume-container {
+  display: flex;
+  align-items: center;
+}
+
+.volume-container:hover .volume-slider {
+  display: inline-block;
+}
+
+.volume-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
 }
