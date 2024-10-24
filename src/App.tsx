@@ -1,11 +1,13 @@
 import { usePlaylist } from '@/hooks/usePlaylist'
 import { SongList } from '@/components/SongList/SongList'
 import { SongCover } from '@/components/SongCover/SongCover'
-import { ControlsBar } from './components/ControlsBar/ControlsBar'
+import { ControlsBar } from '@/components/ControlsBar/ControlsBar'
+import { useMusicPlayerStore } from '@/store'
 import '@/index.css'
 
 function App() {
   const { loading, error } = usePlaylist()
+  const { currentTrackIndex } = useMusicPlayerStore()
 
   if (loading) {
     return <div>Loading playlist...</div>
@@ -28,9 +30,7 @@ function App() {
           <SongList />
         </aside>
       </main>
-      <footer>
-        <ControlsBar />
-      </footer>
+      <footer>{currentTrackIndex !== null && <ControlsBar />}</footer>
     </div>
   )
 }

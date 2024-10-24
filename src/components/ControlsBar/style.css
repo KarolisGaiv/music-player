@@ -1,5 +1,6 @@
 .player-bar {
   background-color: #524c4c;
+  transition: transform 0.3s ease-in-out;
 }
 
 .progress-bar {
