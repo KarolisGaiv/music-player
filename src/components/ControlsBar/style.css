@@ -18,6 +18,11 @@
   background-color: inherit;
 }
 
+.left-controls {
+  display: flex;
+  align-items: center;
+}
+
 .left-controls button {
   background: transparent;
   border: none;
@@ -26,5 +31,11 @@
 .control-icon {
   height: 30px;
   width: 30px;
+  background: transparent;
+}
+
+.play-pause-icon {
+  height: 40px;
+  width: 40px;
   background: transparent;
 }

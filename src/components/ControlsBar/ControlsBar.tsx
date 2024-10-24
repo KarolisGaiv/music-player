@@ -33,7 +33,11 @@ export function ControlsBar() {
             <MdSkipPrevious className="control-icon" />
           </button>
           <button onClick={() => playTrack(currentTrackIndex)}>
-            {isPlaying ? <MdOutlinePause /> : <MdOutlinePlayArrow />}
+            {isPlaying ? (
+              <MdOutlinePause className="play-pause-icon" />
+            ) : (
+              <MdOutlinePlayArrow className="play-pause-icon" />
+            )}
           </button>
           <button onClick={() => nextTrack()}>
             <MdSkipNext className="control-icon" />
