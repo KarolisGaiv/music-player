@@ -2,6 +2,7 @@ import { usePlaylist } from '@/hooks/usePlaylist'
 import { SongList } from '@/components/SongList/SongList'
 import { SongCover } from '@/components/SongCover/SongCover'
 import { ControlsBar } from '@/components/ControlsBar/ControlsBar'
+import { FavoritedSongsList } from '@/components/FavoritedSongsList/FavoritedSongsList'
 import { useMusicPlayerStore } from '@/store'
 import '@/index.css'
 
@@ -22,6 +23,7 @@ function App() {
       <header>
         <h1>Music Player</h1>
       </header>
+      <FavoritedSongsList />
       <main>
         <section className="cover-image-wrapper">
           <SongCover />

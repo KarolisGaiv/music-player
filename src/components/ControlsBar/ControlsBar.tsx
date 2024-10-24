@@ -7,6 +7,8 @@ import {
   MdOutlinePlayArrow,
   MdOutlineVolumeUp,
   MdOutlineVolumeOff,
+  MdFavorite,
+  MdFavoriteBorder,
 } from 'react-icons/md'
 import { formatDuration } from '@/utility/timeFormat'
 
@@ -22,11 +24,15 @@ export function ControlsBar() {
     isPlaying,
     volume,
     setVolume,
+    favorites,
+    toggleFavorite,
   } = useMusicPlayerStore()
 
   const progressPercentage = duration ? (currentTime / duration) * 100 : 0
 
   const trackDetails = currentTrackIndex !== null ? trackList[currentTrackIndex] : null
+
+  const isFavorited = trackDetails && favorites.includes(trackDetails.id)
 
   return (
     <div className="player-bar">
@@ -83,6 +89,13 @@ export function ControlsBar() {
               )}
             </button>
           </div>
+          <button onClick={() => trackDetails && toggleFavorite(trackDetails.id)}>
+            {isFavorited ? (
+              <MdFavorite className="favorite-icon" />
+            ) : (
+              <MdFavoriteBorder className="favorite-icon" />
+            )}
+          </button>
         </div>
       </div>
     </div>

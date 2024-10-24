@@ -21,7 +21,7 @@ interface MusicPlayerState {
   nextTrack: () => void
   prevTrack: () => void
   setVolume: (volume: number) => void
-  toggleFavorite: (volume: number) => void
+  toggleFavorite: (songId: number) => void
   currentTime: number
   duration: number
   updateCurrentTime: () => void

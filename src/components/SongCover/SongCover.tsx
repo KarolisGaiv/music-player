@@ -5,7 +5,7 @@ export function SongCover() {
   const { trackList, currentTrackIndex } = useMusicPlayerStore()
 
   if (currentTrackIndex === null) {
-    return <figure>Currently no song is playing</figure>
+    return <figure>Start listening music</figure>
   }
 
   const currentTrack = trackList[currentTrackIndex]
