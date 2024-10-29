@@ -108,7 +108,7 @@ aside::-webkit-scrollbar-thumb:hover {
 }
 
 .favorites-list {
-  max-width: 250px;
+  width: 250px;
 }
 
 .cover-image-wrapper {
