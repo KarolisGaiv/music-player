@@ -16,7 +16,16 @@
   cursor: default;
   justify-content: flex-start;
   height: 60px;
-  margin-bottom: 8px;
+  padding: 10px 0;
+  margin: 5px 0;
+
+  &:hover {
+    background: #1d1d1d;
+  }
+
+  & > * {
+    background-color: transparent;
+  }
 }
 
 .favorite-song-info {
