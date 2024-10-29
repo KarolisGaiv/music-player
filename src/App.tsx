@@ -24,7 +24,7 @@ function App() {
         <h1>Music Player</h1>
       </header>
       <main>
-        <aside>
+        <aside className="favorites-list">
           <FavoritedSongsList />
         </aside>
         <section className="cover-image-wrapper">
