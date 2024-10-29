@@ -42,7 +42,7 @@ export function ControlsBar() {
           <button onClick={() => prevTrack()}>
             <MdSkipPrevious className="control-icon" />
           </button>
-          <button onClick={() => playTrack(currentTrackIndex)}>
+          <button onClick={() => currentTrackIndex !== null && playTrack(currentTrackIndex)}>
             {isPlaying ? (
               <MdOutlinePause className="play-pause-icon" />
             ) : (
