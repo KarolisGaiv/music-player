@@ -23,8 +23,10 @@ function App() {
       <header>
         <h1>Music Player</h1>
       </header>
-      <FavoritedSongsList />
       <main>
+        <aside>
+          <FavoritedSongsList />
+        </aside>
         <section className="cover-image-wrapper">
           <SongCover />
         </section>

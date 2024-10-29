@@ -67,10 +67,17 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+header {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid;
+  padding: 1rem;
+  border-color: #333;
+}
+
 main {
   display: flex;
   justify-content: space-between;
-  margin: auto 0;
+  padding: 1rem;
 }
 
 footer {
