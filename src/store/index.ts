@@ -112,14 +112,20 @@ export const useMusicPlayerStore = create<MusicPlayerState>((set, get) => {
     // modulo operator here ensures that playlist will behave in circular way. without it there would be out-of-bounds indices (for example -1 or more than the whole playlist length)
     nextTrack: () => {
       const { currentTrackIndex, trackList, playTrack } = get()
-      const nextIndex = (currentTrackIndex + 1) % trackList.length
-      playTrack(nextIndex)
+
+      if (currentTrackIndex !== null) {
+        const nextIndex = (currentTrackIndex + 1) % trackList.length
+        playTrack(nextIndex)
+      }
     },
 
     prevTrack: () => {
       const { currentTrackIndex, trackList, playTrack } = get()
-      const prevIndex = (currentTrackIndex - 1 + trackList.length) % trackList.length
-      playTrack(prevIndex)
+
+      if (currentTrackIndex !== null) {
+        const prevIndex = (currentTrackIndex - 1 + trackList.length) % trackList.length
+        playTrack(prevIndex)
+      }
     },
 
     setVolume: volume => {
