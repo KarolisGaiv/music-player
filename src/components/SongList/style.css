@@ -3,13 +3,20 @@
 }
 
 .song-item-wrapper {
+  border-radius: 4px;
+  padding: 10px;
   display: flex;
+  cursor: default;
   justify-content: space-between;
   align-items: center;
   height: 60px;
 
   &.playing {
     background: rgba(255, 255, 255, 0.1);
+  }
+
+  &:hover {
+    background: #1d1d1d;
   }
 }
 
@@ -27,6 +34,7 @@
   align-items: flex-start;
   overflow: hidden;
   max-width: 350px;
+  margin: 0 10px;
 
   & h2 {
     font-size: 20px;
