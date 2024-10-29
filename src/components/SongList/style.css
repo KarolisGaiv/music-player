@@ -1,5 +1,25 @@
 .song-list-wrapper {
   padding: 1rem;
+  max-height: 65vh;
+  overflow-y: auto;
+}
+
+.song-list-wrapper::-webkit-scrollbar {
+  width: 8px;
+}
+
+.song-list-wrapper::-webkit-scrollbar-thumb {
+  background-color: #555;
+  border-radius: 4px;
+}
+
+.song-list-wrapper::-webkit-scrollbar-track {
+  background-color: #1d1d1d;
+  border-radius: 4px;
+}
+
+.song-list-wrapper::-webkit-scrollbar-thumb:hover {
+  background-color: #888;
 }
 
 .song-item-wrapper {
