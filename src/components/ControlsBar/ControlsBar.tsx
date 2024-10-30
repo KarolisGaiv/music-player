@@ -11,6 +11,7 @@ import {
   MdFavoriteBorder,
 } from 'react-icons/md'
 import { formatDuration } from '@/utility/timeFormat'
+import { useEffect } from 'react'
 
 export function ControlsBar() {
   const {
@@ -33,6 +34,29 @@ export function ControlsBar() {
   const trackDetails = currentTrackIndex !== null ? trackList[currentTrackIndex] : null
 
   const isFavorited = trackDetails && favorites.includes(trackDetails.id)
+
+  useEffect(() => {
+    const handleKeyPress = (event: { key: string; preventDefault: () => void }) => {
+      if (event.key === 'ArrowRight') {
+        nextTrack()
+      }
+      if (event.key === 'ArrowLeft') {
+        prevTrack()
+      }
+      if (event.key === ' ') {
+        event.preventDefault()
+        if (currentTrackIndex !== null) {
+          playTrack(currentTrackIndex)
+        }
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyPress)
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress)
+    }
+  }, [nextTrack, prevTrack, playTrack, currentTrackIndex])
 
   return (
     <div className="player-bar">
