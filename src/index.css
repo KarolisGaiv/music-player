@@ -133,3 +133,31 @@ aside::-webkit-scrollbar-thumb:hover {
     background-color: #f9f9f9;
   }
 }
+
+@media (max-width: 768px) {
+  main {
+    flex-direction: column;
+    margin-top: 1rem;
+  }
+
+  aside {
+    width: 100%;
+    max-height: 30vh;
+  }
+
+  .content-wrapper {
+    padding: 0.5rem;
+  }
+
+  header {
+    padding: 0.5rem;
+  }
+
+  .favorites-list {
+    width: 100%;
+  }
+
+  .cover-image-wrapper {
+    display: none;
+  }
+}
