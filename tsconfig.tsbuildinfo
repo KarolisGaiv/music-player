@@ -1,0 +1,1 @@
+{"root":["./src/App.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/ControlsBar/ControlsBar.tsx","./src/components/FavoritedSongsList/FavoritedSongsList.tsx","./src/components/SongCover/SongCover.tsx","./src/components/SongList/SongList.tsx","./src/hooks/usePlaylist.ts","./src/store/index.ts","./src/utility/timeFormat.ts"],"version":"5.6.3"}

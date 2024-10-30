@@ -43,7 +43,7 @@ export function SongList() {
             <h2 className="song-title">{track.title}</h2>
             <h3 className="song-artist">{track.artist}</h3>
           </div>
-          <h3 className="song-duration">{formatDuration(track.duration)}</h3>
+          <h3 className="song-duration">{formatDuration(Number(track.duration))}</h3>
         </div>
       ))}
     </nav>
