@@ -132,3 +132,36 @@
   border: none;
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .left-controls {
+    width: 66%;
+
+    & span {
+      font-size: 20px;
+    }
+  }
+
+  .control-icon {
+    height: 60px;
+    width: 60px;
+  }
+
+  .play-pause-icon {
+    height: 75px;
+    width: 75px;
+  }
+
+  .middle-controls {
+    display: none;
+  }
+
+  .volume-container {
+    display: none;
+  }
+
+  .right-controls {
+    width: auto;
+    justify-content: flex-end;
+  }
+}
