@@ -24,7 +24,6 @@ interface MusicPlayerState {
   toggleFavorite: (songId: number) => void
   currentTime: number
   duration: number
-  updateCurrentTime: () => void
 }
 
 export const useMusicPlayerStore = create<MusicPlayerState>((set, get) => {
@@ -96,16 +95,6 @@ export const useMusicPlayerStore = create<MusicPlayerState>((set, get) => {
         audio.play()
         set({ isPlaying: true })
         startUpdatingProgress()
-      }
-    },
-
-    updateCurrentTime: () => {
-      const { audio } = get()
-      if (audio) {
-        set({
-          currentTime: audio.currentTime,
-          duration: audio.duration,
-        })
       }
     },
 
